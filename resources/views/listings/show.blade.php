@@ -36,7 +36,6 @@
                             ><i class="fa-solid fa-envelope"></i>
                             Contact Employer</a
                         >
-
                         <a
                             href="{{$listing->website}}"
                             target="_blank"

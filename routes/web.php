@@ -42,10 +42,10 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 // User Routes
 
 // User Register
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/new', [UserController::class, 'register']);
 
 // User storing
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/register', [UserController::class, 'store']);
 
 
 // Common resources Routes:

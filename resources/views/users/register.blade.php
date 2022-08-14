@@ -17,6 +17,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="name"
+                    value="{{old('name')}}"
                 />
             </div>
 
@@ -28,6 +29,7 @@
                     type="email"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
+                    value="{{old('email')}}"
                 />
                 
             </div>
