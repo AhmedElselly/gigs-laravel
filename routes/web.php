@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
@@ -15,28 +17,45 @@ use App\Models\Listing;
 |
 */
 
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest listings',
-        'listings' => Listing::all()
-    ]);
-});
+// Get all listings
+Route::get('/', [ListingController::class, 'index']);
 
-Route::get('/listings/{id}', function($id){
-    $listing = Listing::find($id);
-    if($listing){
-        return view('listing', [
-            'listing' => $listing
-        ]);
-    } else {
-        abort(404);
-    }    
-});
 
-Route::get('/hello', function(){
-    return response('<h1>Hello, World</h1>', 200)
-        ->header('Content-Type', 'html');
-});
+// Showing create form
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+// creating listing data
+Route::post('/listings', [ListingController::class, 'store']);
+
+// Showing edit form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+// Update single listing
+Route::put('/listings/{listing}/update', [ListingController::class, 'update']);
+
+// Remove single listing
+Route::delete('/listings/{listing}/remove', [ListingController::class, 'remove']);
+
+// Get single listing
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// User Routes
+
+// User Register
+Route::get('/register', [UserController::class, 'register']);
+
+// User storing
+Route::post('/users', [UserController::class, 'store']);
+
+
+// Common resources Routes:
+// index - showing all listings
+// show - showing single listing
+// create - showing the form new listing
+// store - creating and storing a new listing 
+// edit - show form to edit listing
+// update - update single listing
+// destroy - removing single listing
 
 // CONSTRAINTS
 // Route::get('/posts/{id}', function($id){
